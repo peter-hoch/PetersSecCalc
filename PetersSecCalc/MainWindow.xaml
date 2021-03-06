@@ -5,8 +5,129 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetersSecCalc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Peter's Security Calculator" Height="450" Width="800">
+    <Window.DataContext>
+        <local:DataContainer/>
+    </Window.DataContext>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.Text2HexConvert2Hex" Executed="Text2HexConvert2Hex_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.Text2HexConvert2Text" Executed="Text2HexConvert2Text_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.Text2Base64BinaryConvert2Binary" Executed="Text2Base64BinaryConvert2Binary_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.Text2Base64BinaryConvert2Text" Executed="Text2Base64BinaryConvert2Text_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.CopyToClipboard" Executed="CopyToClipboard_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.Text2UrlEncodedConvert2Text" Executed="Text2UrlEncodedConvert2Text_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.Text2UrlEncodedConvert2UrlEncoded" Executed="Text2UrlEncodedConvert2UrlEncoded_Executed" CanExecute="Always_CanExecute"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Text to Hex">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50"  Content="Text"/>
+                        <Button Width="100" Content="Convert to Hex" Command="local:Commands.Text2HexConvert2Hex"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding Text2HexInput}"/>
+                        <ComboBox Width="100" ItemsSource="{Binding Text2HexTextEncoding, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Text2HexSelectedTextEncoding}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Text2HexInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50" Content="Hex"/>
+                        <Button Width="100" Content="Convert to Text" Command="local:Commands.Text2HexConvert2Text"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding Text2HexBinary}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Text2HexBinary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Warning, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Foreground="Red" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Text to base64binary">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50"  Content="Text"/>
+                        <Button Width="100" Content="Convert to base64binary" Command="local:Commands.Text2Base64BinaryConvert2Binary"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding Text2Base64BinaryInput}"/>
+                        <ComboBox Width="100" ItemsSource="{Binding Text2Base64BinaryTextEncoding, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Text2Base64BinarySelectedTextEncoding}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Text2Base64BinaryInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50" Content="Binary"/>
+                        <Button Width="100" Content="Convert to Text" Command="local:Commands.Text2Base64BinaryConvert2Text"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding Text2Base64BinaryBinary}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Text2Base64BinaryBinary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Text2Base64BinaryWarning, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Foreground="Red" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="URl encoding">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50"  Content="Text"/>
+                        <Button Width="100" Content="Convert to URL encoded text" Command="local:Commands.Text2UrlEncodedConvert2UrlEncoded"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding UrlEncoderText}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding UrlEncoderText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50" Content="URL encoded"/>
+                        <Button Width="100" Content="Convert to Text" Command="local:Commands.Text2UrlEncodedConvert2Text"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding UrlEncoderUrlEncoded}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding UrlEncoderUrlEncoded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
