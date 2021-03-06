@@ -216,8 +216,41 @@ namespace PetersSecCalc
 
         #endregion
 
+        #region PhpEncoderCharEncoded
 
-        #region event
+        private string _phpEncoderCharEncoded;
+
+        public string PhpEncoderCharEncoded
+        {
+            get { return _phpEncoderCharEncoded; }
+            set
+            {
+                _phpEncoderCharEncoded = value;
+                OnPropertyChanged("PhpEncoderCharEncoded");
+            }
+        }
+
+        #endregion
+
+        #region PhpEncoderText
+
+        private string _phpEncoderText;
+
+        public string PhpEncoderText
+        {
+            get { return _phpEncoderText; }
+            set
+            {
+                _phpEncoderText = value;
+                OnPropertyChanged("PhpEncoderText");
+            }
+        }
+
+        #endregion
+
+
+
+#region event
 
         public event PropertyChangedEventHandler PropertyChanged;
 

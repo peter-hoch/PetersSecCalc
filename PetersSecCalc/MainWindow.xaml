@@ -17,6 +17,8 @@
         <CommandBinding Command="local:Commands.CopyToClipboard" Executed="CopyToClipboard_Executed" CanExecute="Always_CanExecute"/>
         <CommandBinding Command="local:Commands.Text2UrlEncodedConvert2Text" Executed="Text2UrlEncodedConvert2Text_Executed" CanExecute="Always_CanExecute"/>
         <CommandBinding Command="local:Commands.Text2UrlEncodedConvert2UrlEncoded" Executed="Text2UrlEncodedConvert2UrlEncoded_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.PhpEncoderConvertToPhpEncoded" Executed="PhpEncoderConvertToPhpEncoded_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.PhpEncoderConvertToText" Executed="PhpEncoderConvertToText_Executed" CanExecute="Always_CanExecute"/>
     </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -126,6 +128,36 @@
                         <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding UrlEncoderUrlEncoded}"/>
                     </StackPanel>
                     <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding UrlEncoderUrlEncoded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="string to php chr()">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50"  Content="Text"/>
+                        <Button Width="100" Content="Convert to php char()" Command="local:Commands.PhpEncoderConvertToPhpEncoded"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding PhpEncoderText}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding PhpEncoderText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50" Content="PHP char() encoded"/>
+                        <Button Width="100" Content="Convert to Text" Command="local:Commands.PhpEncoderConvertToText"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding PhpEncoderCharEncoded}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding PhpEncoderCharEncoded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
                 </Grid>
             </TabItem>
         </TabControl>

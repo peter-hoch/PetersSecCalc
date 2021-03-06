@@ -230,5 +230,17 @@ namespace PetersSecCalc
             var encoder = new UrlEncoder();
             DataContainer.UrlEncoderUrlEncoded = encoder.ConvertToUrlEncoding(DataContainer.UrlEncoderText);
         }
+
+        private void PhpEncoderConvertToPhpEncoded_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var encoder = new PhpEncoder();
+            DataContainer.PhpEncoderCharEncoded = encoder.ConvertToPhpEncoded(DataContainer.PhpEncoderText);
+        }
+
+        private void PhpEncoderConvertToText_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var encoder = new PhpEncoder();
+            DataContainer.PhpEncoderText = encoder.ConvertToText(DataContainer.PhpEncoderCharEncoded);
+        }
     }
 }

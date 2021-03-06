@@ -14,6 +14,8 @@ namespace PetersSecCalc
         public static RoutedUICommand CopyToClipboard;
         public static RoutedUICommand Text2UrlEncodedConvert2UrlEncoded;
         public static RoutedUICommand Text2UrlEncodedConvert2Text;
+        public static RoutedUICommand PhpEncoderConvertToPhpEncoded;
+        public static RoutedUICommand PhpEncoderConvertToText;
 
 
         static Commands()
@@ -28,6 +30,8 @@ namespace PetersSecCalc
             CopyToClipboard = new RoutedUICommand("CopyToClipboard", "CopyToClipboard", typeof(Commands));
             Text2UrlEncodedConvert2UrlEncoded = new RoutedUICommand("Text2UrlEncodedConvert2UrlEncoded", "Text2UrlEncodedConvert2UrlEncoded", typeof(Commands));
             Text2UrlEncodedConvert2Text = new RoutedUICommand("Text2UrlEncodedConvert2Text", "Text2UrlEncodedConvert2Text", typeof(Commands));
+            PhpEncoderConvertToPhpEncoded = new RoutedUICommand("PhpEncoderConvertToPhpEncoded", "PhpEncoderConvertToPhpEncoded", typeof(Commands));
+            PhpEncoderConvertToText = new RoutedUICommand("PhpEncoderConvertToText", "PhpEncoderConvertToText", typeof(Commands));
         }
 
     }
