@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HexToAsciiEncoder.cs" />
     <Compile Include="PhpEncoder.cs" />
     <Compile Include="StaticUtils.cs" />
     <Compile Include="UrlEncoder.cs" />

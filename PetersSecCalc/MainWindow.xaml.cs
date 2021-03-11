@@ -242,5 +242,12 @@ namespace PetersSecCalc
             var encoder = new PhpEncoder();
             DataContainer.PhpEncoderText = encoder.ConvertToText(DataContainer.PhpEncoderCharEncoded);
         }
+
+        private void Text2AsciiConvertToAscii_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            HexToAsciiEncoder encoder = new HexToAsciiEncoder();
+            DataContainer.Hex2AsciiOutput = encoder.ConvertToAscii(DataContainer.Hex2AsciiInput, DataContainer.Hex2AsciiRegex);
+
+        }
     }
 }

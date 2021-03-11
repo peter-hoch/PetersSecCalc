@@ -16,6 +16,7 @@ namespace PetersSecCalc
         public static RoutedUICommand Text2UrlEncodedConvert2Text;
         public static RoutedUICommand PhpEncoderConvertToPhpEncoded;
         public static RoutedUICommand PhpEncoderConvertToText;
+        public static RoutedUICommand Text2AsciiConvertToAscii;
 
 
         static Commands()
@@ -32,6 +33,7 @@ namespace PetersSecCalc
             Text2UrlEncodedConvert2Text = new RoutedUICommand("Text2UrlEncodedConvert2Text", "Text2UrlEncodedConvert2Text", typeof(Commands));
             PhpEncoderConvertToPhpEncoded = new RoutedUICommand("PhpEncoderConvertToPhpEncoded", "PhpEncoderConvertToPhpEncoded", typeof(Commands));
             PhpEncoderConvertToText = new RoutedUICommand("PhpEncoderConvertToText", "PhpEncoderConvertToText", typeof(Commands));
+            Text2AsciiConvertToAscii = new RoutedUICommand("Text2AsciiConvertToAscii", "Text2AsciiConvertToAscii", typeof(Commands));
         }
 
     }

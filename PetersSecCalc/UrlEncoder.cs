@@ -7,7 +7,7 @@ namespace PetersSecCalc
 {
     public class UrlEncoder
     {
-        const string CharactersToConvert = "!\\\"$%&/()=?`#'+*:,;<>|";
+        const string CharactersToConvert = " !\\\"$%&/()=?`#'+*:,;<>|";
 
         public string ConvertToUrlEncoding(string text)
         {

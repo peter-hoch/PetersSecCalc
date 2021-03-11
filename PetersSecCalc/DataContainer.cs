@@ -248,9 +248,56 @@ namespace PetersSecCalc
 
         #endregion
 
+        #region Hex2AsciiInput
+
+        private string _hex2AsciiInput;
+
+        public string Hex2AsciiInput
+        {
+            get { return _hex2AsciiInput; }
+            set
+            {
+                _hex2AsciiInput = value;
+                OnPropertyChanged("Hex2AsciiInput");
+            }
+        }
+
+        #endregion
+
+        #region Hex2AsciiOutput
+
+        private string _hex2AsciiOutput;
+
+        public string Hex2AsciiOutput
+        {
+            get { return _hex2AsciiOutput; }
+            set
+            {
+                _hex2AsciiOutput = value;
+                OnPropertyChanged("Hex2AsciiOutput");
+            }
+        }
+
+        #endregion
+
+        #region Hex2AsciiRegex
+
+        private string _hex2AsciiRegex = "(?<value>[0-9A-Fa-f]{2})";
+
+        public string Hex2AsciiRegex
+        {
+            get { return _hex2AsciiRegex; }
+            set
+            {
+                _hex2AsciiRegex = value;
+                OnPropertyChanged("Hex2AsciiRegex");
+            }
+        }
+
+        #endregion
 
 
-#region event
+        #region event
 
         public event PropertyChangedEventHandler PropertyChanged;
 

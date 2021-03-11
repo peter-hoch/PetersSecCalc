@@ -19,6 +19,7 @@
         <CommandBinding Command="local:Commands.Text2UrlEncodedConvert2UrlEncoded" Executed="Text2UrlEncodedConvert2UrlEncoded_Executed" CanExecute="Always_CanExecute"/>
         <CommandBinding Command="local:Commands.PhpEncoderConvertToPhpEncoded" Executed="PhpEncoderConvertToPhpEncoded_Executed" CanExecute="Always_CanExecute"/>
         <CommandBinding Command="local:Commands.PhpEncoderConvertToText" Executed="PhpEncoderConvertToText_Executed" CanExecute="Always_CanExecute"/>
+        <CommandBinding Command="local:Commands.Text2AsciiConvertToAscii" Executed="Text2AsciiConvertToAscii_Executed" CanExecute="Always_CanExecute"/>
     </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -158,6 +159,41 @@
                         <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding PhpEncoderCharEncoded}"/>
                     </StackPanel>
                     <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding PhpEncoderCharEncoded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="hex to ascii">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50"  Content="Hex text"/>
+                        <Button Width="100" Content="Convert to ascii" Command="local:Commands.Text2AsciiConvertToAscii"/>
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding Hex2AsciiInput}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Hex2AsciiInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
+                    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50"  Content="Regex"/>
+                        <TextBox Text="{Binding Hex2AsciiRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" MinWidth="200" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                        <Label Width="50" Content="Ascii"/>
+                        <Button Width="100" Content="Convert to hex"   />
+                        <Button Width="100" Content="Copy to Clipboard" Command="local:Commands.CopyToClipboard" DataContext="{Binding Hex2AsciiOutput}"/>
+                    </StackPanel>
+                    <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Hex2AsciiOutput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" />
                 </Grid>
             </TabItem>
         </TabControl>

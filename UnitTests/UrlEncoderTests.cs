@@ -15,7 +15,7 @@ namespace UnitTests
         [TestCase("", "", true)]
         [TestCase("a%", "a%25", true)]
         [TestCase("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890", true)]
-        [TestCase("a!\\\"$%&/()=?`#'+*~-_.:,;<>|", "a%21%5C%22%24%25%26%2F%28%29%3D%3F%60%23%27%2B%2A~-_.%3A%2C%3B%3C%3E%7C", true)]
+        [TestCase(" a!\\\"$%&/()=?`#'+*~-_.:,;<>|", "%20a%21%5C%22%24%25%26%2F%28%29%3D%3F%60%23%27%2B%2A~-_.%3A%2C%3B%3C%3E%7C", true)]
         public void ConvertToUrlEncodingTest(string text, string expectedResult, bool andBack)
         {
             UrlEncoder encoder = new UrlEncoder();
